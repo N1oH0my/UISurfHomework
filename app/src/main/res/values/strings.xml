@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">UISurfHomework</string>
+    <string name="spacex">SpaceX</string>
+    <string name="rocket">ROCKET</string>
+    <string name="launch">LAUNCH</string>
+    <string name="count_down">COUNT DOWN</string>
+    <string name="launch_site">LAUNCH SITE</string>
+    <string name="launch_date">LAUNCH DATE</string>
+</resources>
