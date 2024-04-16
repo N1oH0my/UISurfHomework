@@ -31,25 +31,28 @@
 
     <TextView
         android:id="@+id/typeText"
+        style="@style/RVItemTypeStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="47dp"
         android:layout_marginTop="21dp"
-        style="@style/RVItemTypeStyle"
+        android:layout_marginEnd="1dp"
         android:text="@string/rocket"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/image"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/nameText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/RVItemNameStyle"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="1dp"
         android:fontFamily="@font/googlesans_medium"
         android:text="Starlink 2"
-        style="@style/RVItemNameStyle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/image"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/typeText"
         app:layout_constraintTop_toBottomOf="@+id/typeText" />
 
     <TextView
@@ -57,6 +60,7 @@
         android:layout_width="69dp"
         android:layout_height="17dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="1dp"
         android:background="@drawable/active_status_rounded_corners"
         android:fontFamily="@font/googlesans_medium"
         android:gravity="center"
@@ -64,7 +68,8 @@
         android:textColor="@color/white"
         android:textSize="8sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/image"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/nameText"
         app:layout_constraintTop_toBottomOf="@+id/nameText" />
 
 

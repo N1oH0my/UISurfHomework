@@ -3,7 +3,8 @@
     <style name="RVItemTypeStyle">
         <item name="android:textColor">@color/tabSelected</item>
         <item name="android:textSize">10sp</item>
-        <item name="android:fontFamily">@font/googlesans_regular</item>
+        <item name="android:fontFamily">@font/googlesans_medium</item>
+
     </style>
     <style name="RVItemDetailsStyle">
         <item name="android:textColor">@color/black</item>
@@ -18,7 +19,9 @@
     <style name="RVItemNameStyle">
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">18sp</item>
-        <item name="android:fontFamily">@font/googlesans_medium</item>
+        <item name="android:fontFamily">@font/googlesans_bold</item>
+        <item name="android:layout_width">153sp</item>
+        <item name="android:layout_height">23sp</item>
     </style>
     <style name="TabsStyle">
         <item name="android:textColor">@color/tabUnselected</item>

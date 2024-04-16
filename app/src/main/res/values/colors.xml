@@ -4,7 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="tabSelected">#FF003D</color>
     <color name="tabUnselected">#96000000</color>
-    <color name="RVshadow">#65000000</color>
+    <color name="RVshadow">#4D000000</color>
     <color name="inactive">#FF0000</color>
     <color name="active">#00D215</color>
 </resources>

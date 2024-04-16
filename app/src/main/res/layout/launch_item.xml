@@ -33,22 +33,26 @@
         style="@style/RVItemTypeStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="47dp"
         android:layout_marginTop="21dp"
+        android:layout_marginEnd="1dp"
         android:text="@string/launch"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/image"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/nameText"
         style="@style/RVItemNameStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
         android:layout_marginTop="5dp"
+        android:layout_marginEnd="1dp"
         android:fontFamily="@font/googlesans_medium"
         android:text="Starlink 2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/image"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/typeText"
         app:layout_constraintTop_toBottomOf="@+id/typeText" />
 
     <TextView
@@ -57,10 +61,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:layout_marginEnd="1dp"
         android:fontFamily="@font/googlesans_regular"
         android:text="CCAES SLC 40"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/image"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/nameText"
         app:layout_constraintTop_toBottomOf="@+id/nameText" />
 
     <TextView
@@ -69,9 +75,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:layout_marginEnd="1dp"
         android:fontFamily="@font/googlesans_regular"
         android:text="16-12-2014"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/image"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/shortSiteText"
         app:layout_constraintTop_toBottomOf="@+id/shortSiteText" />
 </androidx.constraintlayout.widget.ConstraintLayout>

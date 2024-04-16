@@ -3,10 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraintRVItem"
     android:layout_width="350dp"
-    android:layout_height="428dp"
-    android:background="@color/white"
+    android:layout_height="380dp"
     android:layout_marginTop="20dp"
-    >
+    android:background="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintRV2Item"
@@ -40,94 +39,101 @@
 
         <TextView
             android:id="@+id/typeText"
+            style="@style/RVItemTypeStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="47dp"
             android:layout_marginTop="21dp"
-            style="@style/RVItemTypeStyle"
+            android:layout_marginEnd="1dp"
             android:text="@string/launch"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/image"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/nameText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/RVItemNameStyle"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="1dp"
             android:fontFamily="@font/googlesans_medium"
             android:text="Starlink 2"
-            style="@style/RVItemNameStyle"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/image"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/typeText"
             app:layout_constraintTop_toBottomOf="@+id/typeText" />
 
         <TextView
             android:id="@+id/shortSiteText"
+            style="@style/RVItemShortDetailsStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="1dp"
             android:fontFamily="@font/googlesans_regular"
             android:text="CCAES SLC 40"
-            style="@style/RVItemShortDetailsStyle"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/image"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/nameText"
             app:layout_constraintTop_toBottomOf="@+id/nameText" />
 
         <TextView
             android:id="@+id/shortLaunchDateText"
+            style="@style/RVItemShortDetailsStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="1dp"
             android:fontFamily="@font/googlesans_regular"
             android:text="16-12-2014"
-            style="@style/RVItemShortDetailsStyle"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/image"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/shortSiteText"
             app:layout_constraintTop_toBottomOf="@+id/shortSiteText" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/textView"
+        style="@style/RVItemTypeStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="40dp"
         android:text="@string/launch_date"
-        style="@style/RVItemTypeStyle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintRV2Item" />
 
     <TextView
         android:id="@+id/launchDate"
+        style="@style/RVItemDetailsStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="10dp"
         android:text="Thu Oct 17 5:30:00 2019"
-        style="@style/RVItemDetailsStyle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/textView3"
+        style="@style/RVItemTypeStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="10dp"
         android:text="@string/launch_site"
-        style="@style/RVItemTypeStyle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/launchDate" />
 
     <TextView
         android:id="@+id/launchSite"
+        style="@style/RVItemDetailsStyle"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="1dp"
         android:text="Cape Canaveral Air Force Station Space Launch Complex 40"
-        style="@style/RVItemDetailsStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -135,23 +141,23 @@
 
     <TextView
         android:id="@+id/textView6"
+        style="@style/RVItemTypeStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="10dp"
         android:text="@string/count_down"
-        style="@style/RVItemTypeStyle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/launchSite" />
 
     <TextView
         android:id="@+id/countDown"
+        style="@style/RVItemDetailsStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="10dp"
         android:text="5 Hrs 30mins more..."
-        style="@style/RVItemDetailsStyle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
