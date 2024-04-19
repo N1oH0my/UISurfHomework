@@ -1,8 +1,11 @@
 package com.example.uisurfhomework.models
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 import java.text.SimpleDateFormat
 import java.util.Locale
 
+@Parcelize
 data class RocketModel(
     val img: String,
     val type: String,
@@ -16,7 +19,7 @@ data class RocketModel(
     var isUpcoming: Boolean = false,
     var isLaunch: Boolean = false,
     var isRocket: Boolean = false,
-    )
+    ): Parcelable
 {
     val shortlaunchDate: String
         get() {

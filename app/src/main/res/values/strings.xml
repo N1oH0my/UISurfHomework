@@ -6,4 +6,6 @@
     <string name="count_down">COUNT DOWN</string>
     <string name="launch_site">LAUNCH SITE</string>
     <string name="launch_date">LAUNCH DATE</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
