@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.example.uisurfhomework.R
 import com.example.uisurfhomework.models.RocketModel
 
-class UpcomingRVAdapter(private val rocketList: List<RocketModel>) :
+class UpcomingRVAdapter(private val rocketList: MutableList<RocketModel>) :
     RecyclerView.Adapter<UpcomingRVAdapter.UpcomingViewHolder>() {
 
     inner class UpcomingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

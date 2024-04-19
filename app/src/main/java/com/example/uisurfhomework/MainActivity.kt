@@ -9,13 +9,16 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.uisurfhomework.adapters.LaunchesRVAdapter
 import com.example.uisurfhomework.adapters.RocketsRVAdapter
 import com.example.uisurfhomework.adapters.UpcomingRVAdapter
+import com.example.uisurfhomework.adapters.ViewPagerAdapter
 import com.example.uisurfhomework.databinding.ActivityMainBinding
 import com.example.uisurfhomework.models.RocketModel
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : AppCompatActivity() {
     private val binding by viewBinding(ActivityMainBinding::bind)
@@ -31,93 +34,56 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        val mainRocketsList = generateRocketList()
+
+        val forLaunchList = mainRocketsList.filter { it.isLaunch }.toMutableList()
+        val forRocketsList = mainRocketsList.filter { it.isRocket }.toMutableList()
+        val forUpcomingList = mainRocketsList.filter { it.isUpcoming }.toMutableList()
+
+        val filteredRocketsLists = listOf(forUpcomingList, forLaunchList, forRocketsList)
+
+        val viewPager: ViewPager2 = binding.viewPager
+        val viewPageAdapter = ViewPagerAdapter(this, filteredRocketsLists)
+        viewPager.adapter = viewPageAdapter
+
         val tabLayout: TabLayout = binding.mainTabLayout
-        val tab1 = layoutInflater.inflate(R.layout.custom_tab, null) as TextView
-        val tab2 = layoutInflater.inflate(R.layout.custom_tab, null) as TextView
-        val tab3 = layoutInflater.inflate(R.layout.custom_tab, null) as TextView
-        tab1.text = "Upcoming"
-        tab1.setTextColor(resources.getColor(R.color.tabSelected))
-        tabLayout.addTab(tabLayout.newTab().setCustomView(tab1))
-        tab2.text = "Launches"
-        tabLayout.addTab(tabLayout.newTab().setCustomView(tab2))
-        tab3.text = "Rockets"
-        tabLayout.addTab(tabLayout.newTab().setCustomView(tab3))
+        val tabTitles = listOf("Upcoming", "Launches", "Rockets")
+
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+            tab.text = tabTitles[position]
+        }.attach()
+
+        for (i in tabTitles.indices) {
+            val tabView = layoutInflater.inflate(R.layout.custom_tab, null)
+            val tabTextView = tabView.findViewById<TextView>(R.id.tabText)
+            tabTextView.text = tabTitles[i]
+            tabLayout.getTabAt(i)?.customView = tabView
+
+            if (i == 0) {
+                tabTextView.setTextColor(resources.getColor(R.color.tabSelected))
+            }
+        }
+
+
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 val customView = tab.customView as TextView?
                 customView?.setTextColor(resources.getColor(R.color.tabSelected))
-                when (tab.position) {
-                    0 -> showUpcoming()
-                    1 -> showLaunched()
-                    2 -> showRockets()
-                }
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab) {
                 val customView = tab.customView as TextView?
                 customView?.setTextColor(resources.getColor(R.color.tabUnselected))
-                when (tab.position) {
-                    0 -> hideUpcoming()
-                    1 -> hideLaunched()
-                    2 -> hideRockets()
-                }
             }
 
-            override fun onTabReselected(tab: TabLayout.Tab) {}
+            override fun onTabReselected(p0: TabLayout.Tab?) {}
         })
 
-        val rocketsList = generateRocketList()
-
-        val forLaunchList = rocketsList.filter { it.isLaunch }
-        val forRocketsList = rocketsList.filter { it.isRocket }
-        val forUpcomingList = rocketsList.filter { it.isUpcoming }
-
-
-        val recyclerViewUpcoming: RecyclerView = binding.tab1RecyclerView
-        recyclerViewUpcoming.layoutManager = LinearLayoutManager(this)
-        val adapterUp = UpcomingRVAdapter(forUpcomingList)
-        recyclerViewUpcoming.adapter = adapterUp
-
-        val recyclerViewLaunch: RecyclerView = binding.tab2RecyclerView
-        recyclerViewLaunch.layoutManager = LinearLayoutManager(this)
-        val adapterL = LaunchesRVAdapter(forLaunchList)
-        recyclerViewLaunch.adapter = adapterL
-
-        val recyclerViewRocket: RecyclerView = binding.tab3RecyclerView
-        recyclerViewRocket.layoutManager = LinearLayoutManager(this)
-        val adapterR = RocketsRVAdapter(forRocketsList)
-        recyclerViewRocket.adapter = adapterR
-
-        hideLaunched()
-        hideRockets()
     }
 
-    private fun hideRockets() {
-        binding.tab3RecyclerView.visibility = View.GONE
-    }
 
-    private fun hideLaunched() {
-        binding.tab2RecyclerView.visibility = View.GONE
-    }
-
-    private fun hideUpcoming() {
-        binding.tab1RecyclerView.visibility = View.GONE
-    }
-
-    private fun showRockets() {
-        binding.tab3RecyclerView.visibility = View.VISIBLE
-    }
-
-    private fun showLaunched() {
-        binding.tab2RecyclerView.visibility = View.VISIBLE
-    }
-
-    private fun showUpcoming() {
-        binding.tab1RecyclerView.visibility = View.VISIBLE
-    }
-
-    private fun generateRocketList(): List<RocketModel> {
-        return listOf(
+    private fun generateRocketList(): MutableList<RocketModel> {
+        return mutableListOf(
             RocketModel("starlinktwof", "LAUNCH", "Starlink 2", "Thu Oct 17 5:30:00 2019", "Cape Canaveral Air Force Station Space Launch Complex 400", "5 Hrs 30mins more...", "ACTIVE", isUpcoming = true),
             RocketModel("bigfalconrocket", "ROCKET", "Big Falcon Rocket", "Thu Oct 17 5:30:00 2019", "Cape Canaveral Air Force Station Space Launch Complex 42", "5 Hrs 30mins more...", "ACTIVE", isRocket = true),
             RocketModel("crstwo", "LAUNCH", "CRS - 2", "Thu Oct 17 5:30:00 2019", "Cape Canaveral Air Force Station Space Launch Complex 44", "5 Hrs 30mins more...", "ACTIVE", isLaunch = true),
