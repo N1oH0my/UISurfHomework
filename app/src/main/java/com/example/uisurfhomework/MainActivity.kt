@@ -16,6 +16,7 @@ import com.example.uisurfhomework.adapters.RocketsRVAdapter
 import com.example.uisurfhomework.adapters.UpcomingRVAdapter
 import com.example.uisurfhomework.adapters.ViewPagerAdapter
 import com.example.uisurfhomework.databinding.ActivityMainBinding
+import com.example.uisurfhomework.features.CustomTabLayout
 import com.example.uisurfhomework.models.RocketModel
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -46,38 +47,15 @@ class MainActivity : AppCompatActivity() {
         val viewPageAdapter = ViewPagerAdapter(this, filteredRocketsLists)
         viewPager.adapter = viewPageAdapter
 
-        val tabLayout: TabLayout = binding.mainTabLayout
+        val tabLayout: CustomTabLayout = binding.customTabLayout
         val tabTitles = listOf("Upcoming", "Launches", "Rockets")
 
-        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = tabTitles[position]
-        }.attach()
-
-        for (i in tabTitles.indices) {
-            val tabView = layoutInflater.inflate(R.layout.custom_tab, null)
-            val tabTextView = tabView.findViewById<TextView>(R.id.tabText)
-            tabTextView.text = tabTitles[i]
-            tabLayout.getTabAt(i)?.customView = tabView
-
-            if (i == 0) {
-                tabTextView.setTextColor(resources.getColor(R.color.tabSelected))
-            }
-        }
-
-
-        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab) {
-                val customView = tab.customView as TextView?
-                customView?.setTextColor(resources.getColor(R.color.tabSelected))
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab) {
-                val customView = tab.customView as TextView?
-                customView?.setTextColor(resources.getColor(R.color.tabUnselected))
-            }
-
-            override fun onTabReselected(p0: TabLayout.Tab?) {}
-        })
+        tabLayout.setupWithViewPager(
+            viewPager,
+            tabTitles,
+            R.color.tabSelected,
+            R.color.tabUnselected
+        )
 
     }
 
