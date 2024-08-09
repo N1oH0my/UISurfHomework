@@ -45,7 +45,10 @@
             android:layout_marginEnd="-12dp"
             android:background="@android:color/transparent"
             app:tabGravity="start"
-            app:tabIndicatorHeight="0dp"
+            app:tabIndicatorHeight="53dp"
+            app:tabIndicatorColor="@color/blue_gray"
+            app:tabIndicator="@drawable/rounded_tab_shape_with_color"
+            app:tabIndicatorAnimationMode="linear"
             app:tabRippleColor="@null" />
 
         <androidx.viewpager2.widget.ViewPager2

@@ -2,6 +2,7 @@ package com.example.uisurfhomework
 
 import android.os.Bundle
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -67,13 +68,15 @@ class MainActivity : AppCompatActivity() {
 
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
-                val customView = tab.customView as TextView?
+                val customView = tab.customView?.findViewById<TextView>(R.id.tabText)
                 customView?.setTextColor(resources.getColor(R.color.tabSelected))
+                customView?.background = (resources.getDrawable(R.drawable.rounded_tab_shape_with_color))
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab) {
-                val customView = tab.customView as TextView?
+                val customView = tab.customView?.findViewById<TextView>(R.id.tabText)
                 customView?.setTextColor(resources.getColor(R.color.tabUnselected))
+                customView?.background = (resources.getDrawable(R.drawable.rounded_tab_shape))
             }
 
             override fun onTabReselected(p0: TabLayout.Tab?) {}
