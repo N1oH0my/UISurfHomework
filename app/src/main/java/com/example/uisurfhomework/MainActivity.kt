@@ -1,19 +1,13 @@
 package com.example.uisurfhomework
 
 import android.os.Bundle
-import android.view.View
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.example.uisurfhomework.adapters.LaunchesRVAdapter
-import com.example.uisurfhomework.adapters.RocketsRVAdapter
-import com.example.uisurfhomework.adapters.UpcomingRVAdapter
 import com.example.uisurfhomework.adapters.ViewPagerAdapter
 import com.example.uisurfhomework.databinding.ActivityMainBinding
 import com.example.uisurfhomework.models.RocketModel
@@ -47,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         viewPager.adapter = viewPageAdapter
 
         val tabLayout: TabLayout = binding.mainTabLayout
-        val tabTitles = listOf("Upcoming", "Launches", "Rockets")
+        val tabTitles = listOf("Upcoming", "Launches", "Rockets", "Animated")
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = tabTitles[position]
@@ -84,21 +78,147 @@ class MainActivity : AppCompatActivity() {
 
     private fun generateRocketList(): MutableList<RocketModel> {
         return mutableListOf(
-            RocketModel("starlinktwof", "LAUNCH", "Starlink 2", "Thu Oct 17 5:30:00 2019", "Cape Canaveral Air Force Station Space Launch Complex 400", "5 Hrs 30mins more...", "ACTIVE", isUpcoming = true),
-            RocketModel("bigfalconrocket", "ROCKET", "Big Falcon Rocket", "Thu Oct 17 5:30:00 2019", "Cape Canaveral Air Force Station Space Launch Complex 42", "5 Hrs 30mins more...", "ACTIVE", isRocket = true),
-            RocketModel("crstwo", "LAUNCH", "CRS - 2", "Thu Oct 17 5:30:00 2019", "Cape Canaveral Air Force Station Space Launch Complex 44", "5 Hrs 30mins more...", "ACTIVE", isLaunch = true),
-            RocketModel("demosat", "LAUNCH", "DemoSat", "Thu Oct 17 5:30:00 2019", "Cape Canaveral Air Force Station Space Launch Complex 40", "5 Hrs 30mins more...", "ACTIVE", isUpcoming = true),
-            RocketModel("falconone", "ROCKET", "Falcon 1", "Thu Oct 17 5:30:00 2019", "Cape Canaveral Air Force Station Space Launch Complex 403", "5 Hrs 30mins more...", "INACTIVE", isRocket = true),
-            RocketModel("falconnine", "LAUNCH", "Falcon 9", "Thu Oct 17 5:30:00 2019", "Cape Canaveral Air Force Station Space Launch Complex 43", "5 Hrs 30mins more...", "ACTIVE", isRocket = true),
-            RocketModel("bigfalconrocket", "ROCKET", "Big Falcon Rocket", "Thu Oct 17 5:30:00 2019", "Cape Canaveral Air Force Station Space Launch Complex 42", "5 Hrs 30mins more...", "ACTIVE", isRocket = true),
-            RocketModel("falconone", "ROCKET", "Falcon 1", "Thu Oct 17 5:30:00 2019", "Cape Canaveral Air Force Station Space Launch Complex 403", "5 Hrs 30mins more...", "INACTIVE", isRocket = true),
-            RocketModel("falconnine", "LAUNCH", "Falcon 9", "Thu Oct 17 5:30:00 2019", "Cape Canaveral Air Force Station Space Launch Complex 43", "5 Hrs 30mins more...", "ACTIVE", isRocket = true),
-            RocketModel("falconninetest", "ROCKET", "Falcon 9 Test", "Thu Oct 17 5:30:00 2019", "Cape Canaveral Air Force Station Space Launch Complex 99", "5 Hrs 30mins more...", "ACTIVE", isLaunch = true),
-            RocketModel("starlinktwo", "LAUNCH", "Starlink 2", "Thu Oct 17 5:30:00 2019", "Cape Canaveral Air Force Station Space Launch Complex 45", "5 Hrs 30mins more...", "ACTIVE", isLaunch = true),
-            RocketModel("crstwo", "LAUNCH", "CRS - 2", "Thu Oct 17 5:30:00 2019", "Cape Canaveral Air Force Station Space Launch Complex 44", "5 Hrs 30mins more...", "ACTIVE", isLaunch = true),
-            RocketModel("falconninetest", "ROCKET", "Falcon 9 Test", "Thu Oct 17 5:30:00 2019", "Cape Canaveral Air Force Station Space Launch Complex 99", "5 Hrs 30mins more...", "ACTIVE", isLaunch = true),
-            RocketModel("starlinktwof", "LAUNCH", "Starlink 2", "Thu Oct 17 5:30:00 2019", "Cape Canaveral Air Force Station Space Launch Complex 45", "5 Hrs 30mins more...", "ACTIVE", isLaunch = true),
+            RocketModel(
+                "starlinktwof",
+                "LAUNCH",
+                "Starlink 2",
+                "Thu Oct 17 5:30:00 2019",
+                "Cape Canaveral Air Force Station Space Launch Complex 400",
+                "5 Hrs 30mins more...",
+                "ACTIVE",
+                isUpcoming = true
+            ),
+            RocketModel(
+                "bigfalconrocket",
+                "ROCKET",
+                "Big Falcon Rocket",
+                "Thu Oct 17 5:30:00 2019",
+                "Cape Canaveral Air Force Station Space Launch Complex 42",
+                "5 Hrs 30mins more...",
+                "ACTIVE",
+                isRocket = true
+            ),
+            RocketModel(
+                "crstwo",
+                "LAUNCH",
+                "CRS - 2",
+                "Thu Oct 17 5:30:00 2019",
+                "Cape Canaveral Air Force Station Space Launch Complex 44",
+                "5 Hrs 30mins more...",
+                "ACTIVE",
+                isLaunch = true
+            ),
+            RocketModel(
+                "demosat",
+                "LAUNCH",
+                "DemoSat",
+                "Thu Oct 17 5:30:00 2019",
+                "Cape Canaveral Air Force Station Space Launch Complex 40",
+                "5 Hrs 30mins more...",
+                "ACTIVE",
+                isUpcoming = true
+            ),
+            RocketModel(
+                "falconone",
+                "ROCKET",
+                "Falcon 1",
+                "Thu Oct 17 5:30:00 2019",
+                "Cape Canaveral Air Force Station Space Launch Complex 403",
+                "5 Hrs 30mins more...",
+                "INACTIVE",
+                isRocket = true
+            ),
+            RocketModel(
+                "falconnine",
+                "LAUNCH",
+                "Falcon 9",
+                "Thu Oct 17 5:30:00 2019",
+                "Cape Canaveral Air Force Station Space Launch Complex 43",
+                "5 Hrs 30mins more...",
+                "ACTIVE",
+                isRocket = true
+            ),
+            RocketModel(
+                "bigfalconrocket",
+                "ROCKET",
+                "Big Falcon Rocket",
+                "Thu Oct 17 5:30:00 2019",
+                "Cape Canaveral Air Force Station Space Launch Complex 42",
+                "5 Hrs 30mins more...",
+                "ACTIVE",
+                isRocket = true
+            ),
+            RocketModel(
+                "falconone",
+                "ROCKET",
+                "Falcon 1",
+                "Thu Oct 17 5:30:00 2019",
+                "Cape Canaveral Air Force Station Space Launch Complex 403",
+                "5 Hrs 30mins more...",
+                "INACTIVE",
+                isRocket = true
+            ),
+            RocketModel(
+                "falconnine",
+                "LAUNCH",
+                "Falcon 9",
+                "Thu Oct 17 5:30:00 2019",
+                "Cape Canaveral Air Force Station Space Launch Complex 43",
+                "5 Hrs 30mins more...",
+                "ACTIVE",
+                isRocket = true
+            ),
+            RocketModel(
+                "falconninetest",
+                "ROCKET",
+                "Falcon 9 Test",
+                "Thu Oct 17 5:30:00 2019",
+                "Cape Canaveral Air Force Station Space Launch Complex 99",
+                "5 Hrs 30mins more...",
+                "ACTIVE",
+                isLaunch = true
+            ),
+            RocketModel(
+                "starlinktwo",
+                "LAUNCH",
+                "Starlink 2",
+                "Thu Oct 17 5:30:00 2019",
+                "Cape Canaveral Air Force Station Space Launch Complex 45",
+                "5 Hrs 30mins more...",
+                "ACTIVE",
+                isLaunch = true
+            ),
+            RocketModel(
+                "crstwo",
+                "LAUNCH",
+                "CRS - 2",
+                "Thu Oct 17 5:30:00 2019",
+                "Cape Canaveral Air Force Station Space Launch Complex 44",
+                "5 Hrs 30mins more...",
+                "ACTIVE",
+                isLaunch = true
+            ),
+            RocketModel(
+                "falconninetest",
+                "ROCKET",
+                "Falcon 9 Test",
+                "Thu Oct 17 5:30:00 2019",
+                "Cape Canaveral Air Force Station Space Launch Complex 99",
+                "5 Hrs 30mins more...",
+                "ACTIVE",
+                isLaunch = true
+            ),
+            RocketModel(
+                "starlinktwof",
+                "LAUNCH",
+                "Starlink 2",
+                "Thu Oct 17 5:30:00 2019",
+                "Cape Canaveral Air Force Station Space Launch Complex 45",
+                "5 Hrs 30mins more...",
+                "ACTIVE",
+                isLaunch = true
+            ),
 
-        )
+            )
     }
 }
