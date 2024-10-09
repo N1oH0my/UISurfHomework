@@ -41,7 +41,7 @@ class AnimatedCardsRVAdapter(private val items: List<String>) :
                     .setDuration(200)
                     .start()
             }
-            itemText.setOnClickListener {
+            itemView.setOnClickListener {
                 val currentSizeSp =
                     itemText.textSize / itemText.resources.displayMetrics.scaledDensity
                 val newSizeSp = if (currentSizeSp == 18f) 24f else 18f
@@ -53,6 +53,15 @@ class AnimatedCardsRVAdapter(private val items: List<String>) :
                     itemText.setTextSize(TypedValue.COMPLEX_UNIT_SP, animatedValue)
                 }
                 animator.start()
+
+                val currentSize = arrowButton.scaleX
+                val newSize = if (currentSize == 1f) 1.5f else 1f
+
+                arrowButton.animate()
+                    .scaleX(newSize)
+                    .scaleY(newSize)
+                    .setDuration(200)
+                    .start()
             }
         }
     }
