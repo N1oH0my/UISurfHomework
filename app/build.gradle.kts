@@ -40,7 +40,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -48,6 +47,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.viewbindingpropertydelegate.full)
     implementation(libs.glide)
+    implementation(libs.google.material)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
