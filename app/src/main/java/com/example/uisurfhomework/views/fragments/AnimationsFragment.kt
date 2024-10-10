@@ -26,9 +26,6 @@ class AnimationsFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_animations, container, false)
 
-        val toolbar: Toolbar = view.findViewById(R.id.toolbar)
-        (activity as AppCompatActivity).setSupportActionBar(toolbar)
-
         recyclerView = view.findViewById(R.id.recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
